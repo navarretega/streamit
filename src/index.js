@@ -1,8 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { createGlobalStyle } from "styled-components";
+
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import { FirebaseContext } from "./context/firebaseContext";
+import { firebaseAuth, firebaseStorage, firebaseFirestore } from "./utils/firebaseSetup";
 
 const GlobalStyles = createGlobalStyle`
     html, body {
@@ -13,10 +16,10 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 ReactDOM.render(
-  <React.StrictMode>
+  <FirebaseContext.Provider value={{ firebaseAuth, firebaseStorage, firebaseFirestore }}>
     <GlobalStyles />
     <App />
-  </React.StrictMode>,
+  </FirebaseContext.Provider>,
   document.getElementById("root")
 );
 

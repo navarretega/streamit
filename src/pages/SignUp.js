@@ -5,21 +5,30 @@ import { Header, Form } from "../components";
 import logo from "../assets/logo.png";
 import { FirebaseContext } from "../context/firebaseContext";
 
-function SignIn() {
+function SignUp() {
   const history = useHistory();
   const { firebaseAuth } = useContext(FirebaseContext);
 
   const [error, setError] = useState("");
+  const [firstName, setFirstName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
-  const isInvalid = password === "" || emailAddress === "";
+  const isInvalid = firstName === "" || password === "" || emailAddress === "";
 
-  const handleSignin = (event) => {
+  const handleSignUp = (event) => {
     event.preventDefault();
+
     firebaseAuth
-      .signInWithEmailAndPassword(emailAddress, password)
-      .then(() => {
-        history.push("/");
+      .createUserWithEmailAndPassword(emailAddress, password)
+      .then((result) => {
+        result.user
+          .updateProfile({
+            displayName: firstName,
+            photoURL: Math.floor(Math.random() * 5) + 1,
+          })
+          .then(() => {
+            history.push("/");
+          });
       })
       .catch((error) => {
         setEmailAddress("");
@@ -35,9 +44,10 @@ function SignIn() {
         <Header.ButtonLink to="/signin">Sign in</Header.ButtonLink>
       </Header.Frame>
       <Form>
-        <Form.Title>Sign In</Form.Title>
+        <Form.Title>Sign Up</Form.Title>
         {error && <Form.Error>{error}</Form.Error>}
-        <Form.Base onSubmit={handleSignin} method="POST">
+        <Form.Base onSubmit={handleSignUp} method="POST">
+          <Form.Input placeholder="First Name" value={firstName} onChange={({ target }) => setFirstName(target.value)} />
           <Form.Input placeholder="Email Address" value={emailAddress} onChange={({ target }) => setEmailAddress(target.value)} />
           <Form.Input
             placeholder="Password"
@@ -47,10 +57,10 @@ function SignIn() {
             onChange={({ target }) => setPassword(target.value)}
           />
           <Form.Submit disabled={isInvalid} type="submit">
-            Sign in
+            Sign up
           </Form.Submit>
           <Form.Text>
-            New to Streamit? <Form.Link to="/signup">Sign up now.</Form.Link>
+            Already a user? <Form.Link to="/signin">Sign in instead.</Form.Link>
           </Form.Text>
         </Form.Base>
       </Form>
@@ -58,4 +68,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignUp;

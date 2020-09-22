@@ -92,7 +92,7 @@ Header.Picture = function HeaderProfile({ src, ...restProps }) {
     if (src) {
       import(`../../assets/${src}.png`).then((image) => setImage(image.default));
     }
-  }, []);
+  }, [src]);
 
   return <Picture {...restProps} src={img} />;
 };
