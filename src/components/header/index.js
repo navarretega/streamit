@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import {
   Group,
+  Background,
+  Gradient,
   Link,
   Text,
   Container,
@@ -18,10 +20,27 @@ import {
   Dropdown,
 } from "./styles/header";
 
-import search from "../../assets/search.png";
+import search from "../../assets/images/icons/search.png";
 
-export default function Header({ children }) {
-  return children;
+export default function Header({ bg = true, children, ...restProps }) {
+  const { src } = { ...restProps };
+
+  const [img, setImage] = useState();
+
+  useEffect(() => {
+    if (src) {
+      import(`../../assets/images/misc/${src}.jpg`).then((image) => setImage(image.default));
+    }
+  }, []);
+
+  return bg ? (
+    <Background {...restProps} srcImg={img}>
+      <Gradient />
+      {children}
+    </Background>
+  ) : (
+    children
+  );
 }
 
 Header.Frame = function HeaderFrame({ children, ...restProps }) {
@@ -90,9 +109,9 @@ Header.Picture = function HeaderProfile({ src, ...restProps }) {
 
   useEffect(() => {
     if (src) {
-      import(`../../assets/${src}.png`).then((image) => setImage(image.default));
+      import(`../../assets/images/users/${src}.png`).then((image) => setImage(image.default));
     }
-  }, [src]);
+  }, []);
 
   return <Picture {...restProps} src={img} />;
 };

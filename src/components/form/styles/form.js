@@ -25,14 +25,14 @@ export const Base = styled.form`
 `;
 
 export const Title = styled.h1`
-  color: #fffffe;
+  color: #001858;
   font-size: 32px;
   font-weight: bold;
   margin-bottom: 28px;
 `;
 
 export const Text = styled.h1`
-  color: #a7a9be;
+  color: #172c66;
   font-size: 16px;
   font-weight: 500;
 `;
@@ -45,7 +45,8 @@ export const TextSmall = styled.h2`
 `;
 
 export const Link = styled(ReactRouterLink)`
-  color: #fffffe;
+  color: #001858;
+  font-weight: bold;
   text-decoration: none;
 
   &:hover {
@@ -54,10 +55,10 @@ export const Link = styled(ReactRouterLink)`
 `;
 
 export const Input = styled.input`
-  background: #333;
+  background: #f0e6d0;
   border-radius: 4px;
   border: 0;
-  color: #fffffe;
+  color: #172c66;
   height: 50px;
   line-height: 50px;
   padding: 5px 20px;
@@ -69,14 +70,14 @@ export const Input = styled.input`
 `;
 
 export const Submit = styled.button`
-  background: #ff8906;
+  background: #f582ae;
   border-radius: 4px;
   font-size: 16px;
   font-weight: bold;
   margin: 0 0 12px;
   padding: 16px;
   border: 0;
-  color: white;
+  color: #001858;
   cursor: pointer;
 
   &:disabled {

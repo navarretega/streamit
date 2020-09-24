@@ -1,16 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 
-import { FirebaseContext } from "../context/firebaseContext";
+import Browse from "./Browse";
+import { useContent } from "../hooks";
+import selectionMap from "../utils/selection-map";
 
-function Home() {
-  const { firebaseAuth } = useContext(FirebaseContext);
+export default function Home() {
+  const { series } = useContent("series");
+  const { films } = useContent("films");
+  const slides = selectionMap({ series, films });
 
-  return (
-    <>
-      <div style={{ color: "white" }}>Home</div>
-      <button onClick={() => firebaseAuth.signOut()}>Sign Out</button>
-    </>
-  );
+  return <Browse slides={slides} />;
 }
-
-export default Home;

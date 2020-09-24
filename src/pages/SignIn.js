@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 import { Header, Form } from "../components";
-import logo from "../assets/logo.png";
+import logo from "../assets/images/misc/logo.png";
 import { FirebaseContext } from "../context/firebaseContext";
 
 function SignIn() {

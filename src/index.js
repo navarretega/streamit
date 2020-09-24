@@ -7,10 +7,13 @@ import * as serviceWorker from "./serviceWorker";
 import { FirebaseContext } from "./context/firebaseContext";
 import { firebaseAuth, firebaseStorage, firebaseFirestore } from "./utils/firebaseSetup";
 
+// import { seedDatabase } from "./seed";
+// seedDatabase(firebaseFirestore);
+
 const GlobalStyles = createGlobalStyle`
     html, body {
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        background-color: #0f0e17;
+        background-color: #fef6e4;
         margin: 0;
     }
 `;
