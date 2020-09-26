@@ -20,7 +20,7 @@ export default function useContent(target) {
       .catch((error) => {
         console.log(error.message);
       });
-  }, []);
+  }, [target, firebaseFirestore]);
 
   return { [target]: content };
 }

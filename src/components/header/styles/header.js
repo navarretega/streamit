@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import { Link as ReactRouterLink } from "react-router-dom";
-import bk from "../../../assets/images/misc/home-bg.jpg";
 
 export const Background = styled.section`
   display: flex;
   flex-direction: column;
-  background: url(${({ srcImg }) => (srcImg ? srcImg : bk)}) top left / cover no-repeat;
+  background: url(${({ srcImg }) => srcImg}) top left / cover no-repeat;
   @media (max-width: 1100px) {
     ${({ dontShowOnSmallViewPort }) => dontShowOnSmallViewPort && `background: none;`}
   }

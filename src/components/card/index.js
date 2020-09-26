@@ -16,8 +16,9 @@ import {
   Entities,
   Item,
   Image,
+  Gradient,
 } from "./styles/card";
-import close from "../../assets/images/icons/close.png";
+import close from "../../assets/icons/close.png";
 
 const FeatureContext = createContext();
 
@@ -91,14 +92,17 @@ Card.Feature = function CardFeature({ category, children, ...restProps }) {
 
   useEffect(() => {
     if (showFeature) {
-      import(`../../assets/images/${category}/${itemFeature.genre}/${itemFeature.slug}/large.jpg`)
+      import(`../../assets/${category}/${itemFeature.stream}/${itemFeature.slug}/large.jpg`)
         .then((image) => setImage(image.default))
         .catch((error) => {});
     }
   }, [showFeature, category, itemFeature]);
 
+  console.log(src);
+
   return showFeature ? (
     <Feature src={src}>
+      {/* <Gradient /> */}
       <Content>
         <FeatureTitle>{itemFeature.title}</FeatureTitle>
         <FeatureText>{itemFeature.description}</FeatureText>

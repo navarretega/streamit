@@ -138,16 +138,27 @@ export const FeatureText = styled.p`
   }
 `;
 
+export const Gradient = styled.div`
+  position: absolute;
+  mix-blend-mode: soft-light;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #8bd3dd;
+`;
+
 export const Feature = styled.div`
   display: flex;
   flex-direction: row;
   background: url(${({ src }) => src});
-  background-size: contain;
+  background-size: 1000px;
   position: relative;
   height: 360px;
   background-position-x: right;
   background-repeat: no-repeat;
   background-color: #8bd3dd;
+  background-blend-mode: soft-light;
 
   @media (max-width: 1000px) {
     height: auto;

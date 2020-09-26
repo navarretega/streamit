@@ -20,7 +20,7 @@ import {
   Dropdown,
 } from "./styles/header";
 
-import search from "../../assets/images/icons/search.png";
+import search from "../../assets/icons/search.png";
 
 export default function Header({ bg = true, children, ...restProps }) {
   const { src } = { ...restProps };
@@ -29,9 +29,9 @@ export default function Header({ bg = true, children, ...restProps }) {
 
   useEffect(() => {
     if (src) {
-      import(`../../assets/images/misc/${src}.jpg`).then((image) => setImage(image.default));
+      import(`../../assets/misc/${src}.jpg`).then((image) => setImage(image.default));
     }
-  }, []);
+  }, [src]);
 
   return bg ? (
     <Background {...restProps} srcImg={img}>
@@ -109,9 +109,9 @@ Header.Picture = function HeaderProfile({ src, ...restProps }) {
 
   useEffect(() => {
     if (src) {
-      import(`../../assets/images/users/${src}.png`).then((image) => setImage(image.default));
+      import(`../../assets/misc/${src}.png`).then((image) => setImage(image.default));
     }
-  }, []);
+  }, [src]);
 
   return <Picture {...restProps} src={img} />;
 };

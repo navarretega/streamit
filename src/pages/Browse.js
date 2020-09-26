@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 
 import { Header, Card, Player } from "../components";
 import { FirebaseContext } from "../context/firebaseContext";
-import logo from "../assets/images/misc/logo.png";
+import logo from "../assets/misc/logo.png";
 
 const user = {
   displayName: "Alex",
@@ -69,7 +69,7 @@ function Browse({ slides }) {
                 {slideItem.data.map((item) => {
                   return (
                     <Card.Item key={item.docId} item={item}>
-                      <Card.Image src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`} />
+                      <Card.Image src={`/${category}/${item.stream}/${item.slug}/small.jpg`} />
                       <Card.Meta>
                         <Card.SubTitle>{item.title}</Card.SubTitle>
                         <Card.Text>{item.description}</Card.Text>

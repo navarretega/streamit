@@ -1,8 +1,9 @@
 import React, { useState, useContext, createContext } from "react";
 import ReactDOM from "react-dom";
-import { Container, Overlay, Inner, Button, Close } from "./styles/player";
-import vid from "../../assets/videos/bunny.mp4";
+import { Container, Overlay, Inner, Button } from "./styles/player";
 export const PlayerContext = createContext();
+
+const vid = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
 
 export default function Player({ children, ...restProps }) {
   const [showPlayer, setShowPlayer] = useState(false);
@@ -19,10 +20,9 @@ Player.Video = function PlayerVideo({ ...restProps }) {
     ? ReactDOM.createPortal(
         <Overlay onClick={() => setShowPlayer(false)}>
           <Inner>
-            <video id="netflix-player" controls>
+            <video id="netflix-player" controls autoPlay>
               <source src={vid} type="video/mp4" />
             </video>
-            <Close />
           </Inner>
         </Overlay>,
         document.body
