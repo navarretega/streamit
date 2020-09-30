@@ -57,13 +57,14 @@ Card.Meta = function CardMeta({ children, ...restProps }) {
   return <Meta {...restProps}>{children}</Meta>;
 };
 
-Card.Item = function CardTitle({ item, children, ...restProps }) {
+Card.Item = function CardTitle({ item, setVideoURL, children, ...restProps }) {
   const { setShowFeature, setItemFeature } = useContext(FeatureContext);
   return (
     <Item
       onClick={() => {
         setItemFeature(item);
         setShowFeature(true);
+        setVideoURL(item.videoURL);
       }}
       {...restProps}
     >
@@ -97,8 +98,6 @@ Card.Feature = function CardFeature({ category, children, ...restProps }) {
         .catch((error) => {});
     }
   }, [showFeature, category, itemFeature]);
-
-  console.log(src);
 
   return showFeature ? (
     <Feature src={src}>

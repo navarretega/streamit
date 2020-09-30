@@ -14,6 +14,9 @@ function Browse({ slides }) {
   const [category, setCategory] = useState("series");
   const [searchTerm, setSearchTerm] = useState("");
   const [slideRows, setSlideRows] = useState([]);
+  const [videoURL, setVideoURL] = useState("");
+
+  console.log("videoURL", videoURL);
 
   useEffect(() => {
     setSlideRows(slides[category]);
@@ -68,7 +71,7 @@ function Browse({ slides }) {
               <Card.Entities>
                 {slideItem.data.map((item) => {
                   return (
-                    <Card.Item key={item.docId} item={item}>
+                    <Card.Item key={item.docId} item={item} setVideoURL={setVideoURL}>
                       <Card.Image src={`/${category}/${item.stream}/${item.slug}/small.jpg`} />
                       <Card.Meta>
                         <Card.SubTitle>{item.title}</Card.SubTitle>
@@ -81,7 +84,7 @@ function Browse({ slides }) {
               <Card.Feature category={category}>
                 <Player>
                   <Player.Button />
-                  <Player.Video />
+                  <Player.Video videoURL={videoURL} />
                 </Player>
               </Card.Feature>
             </Card>

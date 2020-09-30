@@ -3,8 +3,6 @@ import ReactDOM from "react-dom";
 import { Container, Overlay, Inner, Button } from "./styles/player";
 export const PlayerContext = createContext();
 
-const vid = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
-
 export default function Player({ children, ...restProps }) {
   const [showPlayer, setShowPlayer] = useState(false);
   return (
@@ -14,15 +12,20 @@ export default function Player({ children, ...restProps }) {
   );
 }
 
-Player.Video = function PlayerVideo({ ...restProps }) {
+Player.Video = function PlayerVideo({ videoURL, ...restProps }) {
   const { showPlayer, setShowPlayer } = useContext(PlayerContext);
   return showPlayer
     ? ReactDOM.createPortal(
         <Overlay onClick={() => setShowPlayer(false)}>
           <Inner>
-            <video id="netflix-player" controls autoPlay>
-              <source src={vid} type="video/mp4" />
-            </video>
+            <iframe
+              height="500px"
+              width="100%"
+              src={videoURL}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
           </Inner>
         </Overlay>,
         document.body
