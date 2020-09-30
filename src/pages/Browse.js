@@ -16,8 +16,6 @@ function Browse({ slides }) {
   const [slideRows, setSlideRows] = useState([]);
   const [videoURL, setVideoURL] = useState("");
 
-  console.log("videoURL", videoURL);
-
   useEffect(() => {
     setSlideRows(slides[category]);
   }, [slides, category]);

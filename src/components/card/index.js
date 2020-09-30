@@ -109,7 +109,7 @@ Card.Feature = function CardFeature({ category, children, ...restProps }) {
           <img src={close} alt="Close" />
         </FeatureClose>
         <span className="fas fa-star" style={{ margin: "20px 0", fontSize: "20px", color: "#001858" }}></span>
-        <RatingScore>90%</RatingScore>
+        <RatingScore>{`${itemFeature.rating}%`}</RatingScore>
         <RatingCompany>ROTTEN TOMATOES</RatingCompany>
         {children}
       </Content>
